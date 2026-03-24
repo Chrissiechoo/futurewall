@@ -53,41 +53,114 @@ function StarRating({ value, onChange, disabled }) {
   )
 }
 
-function ProjectScoreCard({ project, scores, comments, onScoreChange, onCommentChange, disabled }) {
+function ProjectScoreCard({ project, scores, comments, onScoreChange, onCommentChange, disabled, isOpen, onToggle }) {
+  // Total stars scored for this project
+  const totalStars = judging.criteria.reduce((sum, c) => sum + (scores[c.id] || 0), 0)
+  const maxStars = judging.criteria.length * 5
+  const allScored = judging.criteria.every(c => (scores[c.id] || 0) > 0)
+
   return (
     <div style={{
       background: '#1C1C1E',
-      border: '1px solid #2A2A2E',
+      border: `1px solid ${allScored ? 'rgba(255,176,32,0.35)' : '#2A2A2E'}`,
       borderRadius: '12px',
-      padding: '32px',
-      marginBottom: '24px',
+      marginBottom: '12px',
+      overflow: 'hidden',
+      transition: 'border-color 0.2s',
     }}>
-      {/* Project header */}
-      <div style={{ marginBottom: '24px', paddingBottom: '20px', borderBottom: '1px solid #2A2A2E' }}>
-        <div style={{
-          fontWeight: 700,
+      {/* ---- Collapsed header — always visible ---- */}
+      <button
+        type="button"
+        onClick={onToggle}
+        style={{
+          width: '100%',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: '20px 24px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          textAlign: 'left',
+        }}
+      >
+        {/* Group number badge */}
+        <span style={{
+          fontFamily: 'Space Mono, monospace',
           fontSize: '0.7rem',
-          letterSpacing: '0.15em',
-          textTransform: 'uppercase',
+          fontWeight: 700,
           color: '#00D4E8',
-          marginBottom: '6px',
+          background: 'rgba(0,212,232,0.08)',
+          border: '1px solid rgba(0,212,232,0.2)',
+          borderRadius: '4px',
+          padding: '4px 8px',
+          flexShrink: 0,
+          letterSpacing: '0.08em',
         }}>
-          Group {String(project.groupNumber).padStart(2, '0')} · {project.client}
+          GRP{String(project.groupNumber).padStart(2, '0')}
+        </span>
+
+        {/* Title block */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{
+            fontWeight: 900,
+            fontSize: '0.95rem',
+            color: '#F0F0EE',
+            textTransform: 'uppercase',
+            letterSpacing: '0.01em',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}>
+            {project.campaignName}
+          </div>
+          <div style={{ fontSize: '0.78rem', color: '#555', marginTop: '2px' }}>
+            {project.client} · {project.themeLabel}
+          </div>
         </div>
-        <h3 style={{
-          fontWeight: 900,
-          fontSize: '1.2rem',
-          textTransform: 'uppercase',
-          letterSpacing: '-0.01em',
-          color: '#F0F0EE',
-          marginBottom: '8px',
-        }}>
-          {project.campaignName}
-        </h3>
-        <p style={{ color: '#888', fontStyle: 'italic', fontSize: '0.9rem', lineHeight: 1.5 }}>
-          "{project.hook}"
-        </p>
-      </div>
+
+        {/* Star score summary */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
+          <div style={{ textAlign: 'right' }}>
+            <div style={{
+              fontWeight: 900,
+              fontSize: '1rem',
+              color: allScored ? '#FFB020' : totalStars > 0 ? '#F0F0EE' : '#333',
+              fontFamily: 'Space Mono, monospace',
+            }}>
+              {totalStars}<span style={{ color: '#333', fontSize: '0.8rem' }}>/{maxStars}</span>
+            </div>
+            <div style={{ fontSize: '0.65rem', color: '#555', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+              {allScored ? '✓ scored' : totalStars > 0 ? 'partial' : 'not scored'}
+            </div>
+          </div>
+          {/* Mini star display */}
+          <div style={{ display: 'flex', gap: '2px' }}>
+            {judging.criteria.map(c => (
+              <div key={c.id} style={{
+                width: '6px', height: '6px', borderRadius: '50%',
+                background: (scores[c.id] || 0) > 0 ? '#FFB020' : '#2A2A2E',
+              }} />
+            ))}
+          </div>
+          {/* Chevron */}
+          <span style={{
+            color: '#555',
+            fontSize: '1rem',
+            transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.25s ease',
+            marginLeft: '4px',
+          }}>▾</span>
+        </div>
+      </button>
+
+      {/* ---- Expanded body ---- */}
+      {isOpen && (
+        <div style={{ padding: '0 24px 28px', borderTop: '1px solid #2A2A2E' }}>
+          {/* Hook */}
+          <p style={{ color: '#888', fontStyle: 'italic', fontSize: '0.9rem', lineHeight: 1.5, padding: '16px 0 20px' }}>
+            "{project.hook}"
+          </p>
 
       {/* Full project details */}
       <div style={{
@@ -295,6 +368,8 @@ function ProjectScoreCard({ project, scores, comments, onScoreChange, onCommentC
           />
         </div>
       </div>
+        </div> {/* end expanded body */}
+      )}
     </div>
   )
 }
@@ -316,6 +391,9 @@ export default function Judges() {
   const [submitDone, setSubmitDone] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [alreadySubmitted, setAlreadySubmitted] = useState(false)
+  // Accordion: which project cards are open
+  const [openCards, setOpenCards] = useState({})
+  const toggleCard = (id) => setOpenCards(prev => ({ ...prev, [id]: !prev[id] }))
 
   // Leaderboard — always visible to judges
   const [votes, setVotes] = useState([])
@@ -778,7 +856,7 @@ export default function Judges() {
                 </div>
               </div>
 
-              {/* Project score cards */}
+              {/* Project score cards — accordion */}
               {projects.map(project => (
                 <ProjectScoreCard
                   key={project.id}
@@ -788,6 +866,8 @@ export default function Judges() {
                   onScoreChange={handleScoreChange}
                   onCommentChange={handleCommentChange}
                   disabled={false}
+                  isOpen={!!openCards[project.id]}
+                  onToggle={() => toggleCard(project.id)}
                 />
               ))}
 
