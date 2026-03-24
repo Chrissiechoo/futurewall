@@ -694,7 +694,7 @@ export default function Judges() {
         <div className="container" style={{ display: 'flex', gap: 0 }}>
           {[
             { id: 'score', label: 'Score Projects' },
-            { id: 'leaderboard', label: '🗳 Live Leaderboard' },
+            { id: 'leaderboard', label: '🗳 Leaderboard: Audience Vote' },
           ].map(tab => (
             <button
               key={tab.id}

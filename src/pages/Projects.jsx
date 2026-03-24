@@ -263,7 +263,7 @@ function ProjectModal({ project, onClose }) {
             className="btn-red"
             onClick={onClose}
           >
-            Vote for this Campaign
+            Audience Vote
           </Link>
           <button
             onClick={onClose}
@@ -409,7 +409,7 @@ function ProjectCard({ project, onOpen }) {
               e.currentTarget.style.background = 'transparent'
             }}
           >
-            Vote →
+            Audience Vote →
           </Link>
         </div>
       </div>
