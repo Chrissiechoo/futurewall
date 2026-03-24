@@ -9,6 +9,8 @@ import {
   setDoc,
   getDoc,
   serverTimestamp,
+  collection,
+  onSnapshot,
 } from 'firebase/firestore'
 import { auth, db } from '../firebase'
 import content from '../data/content'
@@ -304,6 +306,7 @@ export default function Judges() {
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState('')
   const [loggingIn, setLoggingIn] = useState(false)
+  const [activeTab, setActiveTab] = useState('score')
 
   // Scores: { [groupId]: { [criterionId]: number } }
   const [scores, setScores] = useState({})
@@ -313,6 +316,18 @@ export default function Judges() {
   const [submitDone, setSubmitDone] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [alreadySubmitted, setAlreadySubmitted] = useState(false)
+
+  // Leaderboard — always visible to judges
+  const [votes, setVotes] = useState([])
+
+  useEffect(() => {
+    const unsub = onSnapshot(collection(db, 'votes'), snap => {
+      const all = []
+      snap.forEach(d => all.push(d.data()))
+      setVotes(all)
+    })
+    return () => unsub()
+  }, [])
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (u) => {
@@ -596,10 +611,96 @@ export default function Judges() {
         </div>
       </section>
 
+      {/* Tabs */}
+      <div style={{ borderBottom: '1px solid #2A2A2E', background: '#0D0D0F' }}>
+        <div className="container" style={{ display: 'flex', gap: 0 }}>
+          {[
+            { id: 'score', label: 'Score Projects' },
+            { id: 'leaderboard', label: '🗳 Live Leaderboard' },
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              style={{
+                padding: '14px 24px',
+                fontWeight: 700,
+                fontSize: '0.8rem',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                border: 'none',
+                background: 'none',
+                cursor: 'pointer',
+                color: activeTab === tab.id ? '#FFB020' : '#555',
+                borderBottom: `2px solid ${activeTab === tab.id ? '#FFB020' : 'transparent'}`,
+                transition: 'all 0.2s',
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Main judges content */}
       <section style={{ padding: '40px 0 80px' }}>
         <div className="container">
-          {submitDone || alreadySubmitted ? (
+          {activeTab === 'leaderboard' ? (
+            /* ---- LIVE LEADERBOARD (always visible to judges) ---- */
+            <div style={{ maxWidth: '720px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '28px' }}>
+                <span style={{
+                  width: '10px', height: '10px', borderRadius: '50%',
+                  background: '#FF4422', boxShadow: '0 0 10px #FF4422',
+                  animation: 'spin 2s linear infinite', flexShrink: 0,
+                  animationName: 'livePulse',
+                }} />
+                <span style={{ fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#FF4422' }}>
+                  Live Audience Votes — {votes.length} cast
+                </span>
+              </div>
+              {(() => {
+                const tallied = projects.map(p => ({
+                  project: p,
+                  count: votes.filter(v => v.groupId === p.id).length,
+                })).sort((a, b) => b.count - a.count)
+                const maxVotes = Math.max(...tallied.map(t => t.count), 1)
+                return (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {tallied.map(({ project: p, count }, idx) => (
+                      <div key={p.id} style={{
+                        background: '#1C1C1E',
+                        border: `1px solid ${idx === 0 && count > 0 ? 'rgba(255,176,32,0.4)' : '#2A2A2E'}`,
+                        borderRadius: '8px',
+                        padding: '16px 20px',
+                      }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px', gap: '12px' }}>
+                          <div>
+                            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#00D4E8', marginRight: '8px', letterSpacing: '0.1em' }}>
+                              GRP{String(p.groupNumber).padStart(2, '0')}
+                            </span>
+                            <span style={{ fontWeight: 700, fontSize: '0.9rem', color: '#F0F0EE' }}>{p.campaignName}</span>
+                            <div style={{ fontSize: '0.78rem', color: '#555', marginTop: '2px' }}>{p.client}</div>
+                          </div>
+                          <div style={{ fontWeight: 900, fontSize: '1.4rem', color: idx === 0 && count > 0 ? '#FFB020' : '#F0F0EE', flexShrink: 0 }}>
+                            {count}{idx === 0 && count > 0 && <span style={{ fontSize: '0.9rem', marginLeft: '4px' }}>★</span>}
+                          </div>
+                        </div>
+                        <div style={{ height: '6px', background: '#2A2A2E', borderRadius: '3px', overflow: 'hidden' }}>
+                          <div style={{
+                            height: '100%',
+                            width: `${(count / maxVotes) * 100}%`,
+                            background: idx === 0 ? 'linear-gradient(90deg,#FFB020,#FF4422)' : '#00D4E8',
+                            borderRadius: '3px',
+                            transition: 'width 0.6s ease',
+                          }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )
+              })()}
+            </div>
+          ) : submitDone || alreadySubmitted ? (
             <div style={{
               background: 'rgba(255,176,32,0.08)',
               border: '1px solid rgba(255,176,32,0.25)',
@@ -785,8 +886,10 @@ export default function Judges() {
       </section>
 
       <style>{`
-        @keyframes spin {
-          to { transform: rotate(360deg); }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes livePulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(0.8); }
         }
       `}</style>
     </main>
