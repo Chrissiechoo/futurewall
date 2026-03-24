@@ -5,14 +5,12 @@ import {
   addDoc,
   serverTimestamp,
   onSnapshot,
-  doc,
 } from 'firebase/firestore'
 import { db } from '../firebase'
 import content from '../data/content'
 
 const SESSION_ID = Math.random().toString(36).slice(2)
 const VOTED_KEY = 'futurewall_voted'
-const LOCKED_MESSAGE = 'Vote tallies are hidden until event night. Scan the QR at Ten Square on 30 April to see the live leaderboard.'
 
 export default function Vote() {
   const { projects } = content
@@ -30,8 +28,7 @@ export default function Vote() {
   const [alreadyVoted, setAlreadyVoted] = useState(false)
   const [alreadyVotedFor, setAlreadyVotedFor] = useState('')
 
-  // Leaderboard state
-  const [leaderboardVisible, setLeaderboardVisible] = useState(false)
+  // Leaderboard state — always visible
   const [votes, setVotes] = useState([])
   const [loadingLeaderboard, setLoadingLeaderboard] = useState(true)
 
@@ -54,40 +51,23 @@ export default function Vote() {
     }
   }, [projects])
 
-  // Listen to leaderboard visibility flag
+  // Listen to votes — always visible
   useEffect(() => {
-    const unsub = onSnapshot(
-      doc(db, 'settings', 'leaderboardVisible'),
-      snap => {
-        if (snap.exists()) {
-          setLeaderboardVisible(!!snap.data().visible)
-        } else {
-          setLeaderboardVisible(false)
-        }
-        setLoadingLeaderboard(false)
-      },
-      err => {
-        console.error('Leaderboard settings error:', err)
-        setLoadingLeaderboard(false)
-      }
-    )
-    return () => unsub()
-  }, [])
-
-  // Listen to votes collection for leaderboard
-  useEffect(() => {
-    if (!leaderboardVisible) return
     const unsub = onSnapshot(
       collection(db, 'votes'),
       snapshot => {
         const all = []
         snapshot.forEach(d => all.push(d.data()))
         setVotes(all)
+        setLoadingLeaderboard(false)
       },
-      err => console.error('Votes error:', err)
+      err => {
+        console.error('Votes error:', err)
+        setLoadingLeaderboard(false)
+      }
     )
     return () => unsub()
-  }, [leaderboardVisible])
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -359,60 +339,6 @@ export default function Vote() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '40px 0' }}>
                   <div className="spinner" />
                   <span style={{ color: '#888' }}>Loading leaderboard...</span>
-                </div>
-              ) : !leaderboardVisible ? (
-                /* Locked state */
-                <div style={{
-                  background: 'rgba(255,176,32,0.06)',
-                  border: '1px solid rgba(255,176,32,0.25)',
-                  borderRadius: '12px',
-                  padding: '48px 40px',
-                  textAlign: 'center',
-                }}>
-                  <div style={{
-                    fontSize: '3rem',
-                    marginBottom: '16px',
-                    filter: 'drop-shadow(0 0 12px rgba(255,176,32,0.4))',
-                  }}>🔒</div>
-                  <h2 style={{
-                    fontWeight: 900,
-                    fontSize: '1.4rem',
-                    textTransform: 'uppercase',
-                    color: '#FFB020',
-                    marginBottom: '16px',
-                  }}>
-                    Leaderboard Locked
-                  </h2>
-                  <p style={{
-                    color: '#888',
-                    lineHeight: 1.8,
-                    maxWidth: '420px',
-                    margin: '0 auto 28px',
-                  }}>
-                    {LOCKED_MESSAGE}
-                  </p>
-                  <div style={{
-                    display: 'flex',
-                    gap: '8px',
-                    justifyContent: 'center',
-                    flexWrap: 'wrap',
-                  }}>
-                    {content.event.hashtags.map(tag => (
-                      <span
-                        key={tag}
-                        style={{
-                          fontSize: '0.75rem',
-                          fontWeight: 700,
-                          color: '#FFB020',
-                          background: 'rgba(255,176,32,0.1)',
-                          padding: '4px 10px',
-                          borderRadius: '100px',
-                        }}
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               ) : (
                 /* Live leaderboard */
