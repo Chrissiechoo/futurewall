@@ -10,10 +10,11 @@ import RSVP from './pages/RSVP'
 import Partners from './pages/Partners'
 import PhotoWall from './pages/PhotoWall'
 import Judges from './pages/Judges'
+import Submit from './pages/Submit'
 
 function AppInner() {
   const location = useLocation()
-  const hideFooter = location.pathname === '/judges'
+  const hideFooter = location.pathname === '/judges' || location.pathname === '/submit'
 
   return (
     <>
@@ -28,6 +29,7 @@ function AppInner() {
         <Route path="/partners" element={<Partners />} />
         <Route path="/photos" element={<PhotoWall />} />
         <Route path="/judges" element={<Judges />} />
+        <Route path="/submit" element={<Submit />} />
       </Routes>
       {!hideFooter && <Footer />}
     </>
