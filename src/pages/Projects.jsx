@@ -246,6 +246,42 @@ function ProjectModal({ project, onClose }) {
               <span style={{ color: '#888', fontSize: '0.9rem' }}>Link coming soon</span>
             )}
           </div>
+
+          {/* Presentation deck */}
+          {project.deckUrl && (
+            <div>
+              <div style={{
+                fontSize: '0.7rem',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: color,
+                marginBottom: '8px',
+              }}>
+                Presentation Deck
+              </div>
+              <a
+                href={project.deckUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  color: '#FFB020',
+                  background: 'rgba(255,176,32,0.1)',
+                  border: '1px solid rgba(255,176,32,0.3)',
+                  padding: '10px 18px',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                }}
+              >
+                ↓ {project.deckLabel}
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Vote CTA */}
