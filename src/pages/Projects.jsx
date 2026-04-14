@@ -234,7 +234,7 @@ function ProjectModal({ project, onClose }) {
           <div>
             <SectionLabel label="Billboard Preview" color={color} />
             {project.billboardVideoUrl ? (
-              <VideoEmbed src={project.billboardVideoUrl} title={`${project.campaignName} billboard`} />
+              <VideoEmbed src={project.billboardVideoUrl} title={`${project.campaignName} billboard`} portrait={!!project.billboardPortrait} />
             ) : (
               <div style={{
                 background: '#1C1C1E', border: '1px dashed #2A2A2E', borderRadius: '8px',
@@ -251,13 +251,13 @@ function ProjectModal({ project, onClose }) {
           {project.socialVideoUrl && (
             <div>
               <SectionLabel label="Social Media Adaptation" color={color} />
-              <VideoEmbed src={project.socialVideoUrl} title={`${project.campaignName} social`} />
+              <VideoEmbed src={project.socialVideoUrl} title={`${project.campaignName} social`} portrait={project.socialVideoUrl.includes('shorts')} />
             </div>
           )}
           {project.socialVideoUrl2 && (
             <div>
               <SectionLabel label="Social Media Adaptation 2" color={color} />
-              <VideoEmbed src={project.socialVideoUrl2} title={`${project.campaignName} social 2`} />
+              <VideoEmbed src={project.socialVideoUrl2} title={`${project.campaignName} social 2`} portrait={project.socialVideoUrl2.includes('shorts')} />
             </div>
           )}
 

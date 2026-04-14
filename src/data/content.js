@@ -49,8 +49,8 @@ export default {
       "qrJourney": "See billboard → Scan QR → Land on Vitality Assessment → Commit to 10-Day Reset",
       "audience": "40–55 'Sandwich Strivers' — busy adults feeling the gap between chronological and biological age",
       "theme": "health", "themeLabel": "Health + longevity",
-      "teamNames": "", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1Nv7SR72dWMdYyiTAIs_JxB8Bia4vb5Qi/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
+      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/7VP19miQR6k", "platformUrl": "", "heroImageUrl": "https://img.youtube.com/vi/7VP19miQR6k/hqdefault.jpg",
+      "deckUrl": "https://drive.google.com/file/d/1Nv7SR72dWMdYyiTAIs_JxB8Bia4vb5Qi/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://www.youtube.com/embed/WAjFZzU0xF8", "socialVideoUrl2": ""
     },
     {
       "id": "grp02", "groupNumber": 2, "client": "Action Buddy", "clientTheme": "AI journalling + mental wellness",
@@ -141,7 +141,7 @@ export default {
       "qrJourney": "See glitch billboard → Unsettled → Scan QR → Watch TikTok micro-drama → Learn early signs → Take memory quiz",
       "audience": "Gen Z + caregivers and family members.",
       "theme": "society", "themeLabel": "Society + dementia",
-      "teamNames": "Celeste · Chloe · Ella · Jie Yun · Ryan · Shaun", "billboardVideoUrl": "https://drive.google.com/file/d/17aKhclxbaGNJOMdoRWwpZFsAeRxNBVZG/preview", "platformUrl": "", "heroImageUrl": "",
+      "teamNames": "Celeste · Chloe · Ella · Jie Yun · Ryan · Shaun", "billboardVideoUrl": "https://drive.google.com/file/d/17aKhclxbaGNJOMdoRWwpZFsAeRxNBVZG/preview", "billboardPortrait": true, "platformUrl": "", "heroImageUrl": "",
       "deckUrl": "https://drive.google.com/file/d/1jPhbo6Wh5Le8mJYyNmKxgt2EwNbpjdDq/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1eo-wdYCh283wRCRBai9ygzYfVgkjl1Gx/preview", "socialVideoUrl2": "https://drive.google.com/file/d/13EkTXtDKjOBfw7t2DEW-5i0SwgqLql3Q/preview"
     },
     {
@@ -154,7 +154,7 @@ export default {
       "qrJourney": "See Tetris billboard → Recognise your skill level → Scan to LinkedIn → Take AI maturity assessment → Register for LAIS",
       "audience": "Corporate leaders, managers, founders, HR/L&D, policy professionals",
       "theme": "tech", "themeLabel": "Tech + AI leadership",
-      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1fXMWW1mbtty9IUiXYJ72PSjPoXb48yea/preview", "platformUrl": "", "heroImageUrl": "https://drive.google.com/thumbnail?id=1jciWVewnJXGngNOvYy0cIEuNxfDz3Bx-&sz=w600",
+      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/XJbXxgV0wsg", "billboardPortrait": true, "platformUrl": "", "heroImageUrl": "https://img.youtube.com/vi/XJbXxgV0wsg/hqdefault.jpg",
       "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
     }
   ],
