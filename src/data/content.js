@@ -8,7 +8,7 @@ export default {
     "displayTime": "5–9 PM",
     "timezone": "Asia/Singapore",
     "venue": "Ten Square",
-    "venueAddress": "10 Cavenagh Road, Singapore 229616",
+    "venueAddress": "1 Short Street, Singapore 188218",
     "hashtags": ["FutureIsOnTheWall", "SITxTenSquare", "BillboardAfterDark", "DCM3001"],
     "instagramHandle": "",
     "capacity": 120,
