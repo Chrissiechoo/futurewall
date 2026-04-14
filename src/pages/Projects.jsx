@@ -293,8 +293,9 @@ function ProjectModal({ project, onClose }) {
 function ProjectCard({ project, onOpen }) {
   const color = themeColors[project.theme] || '#00D4E8'
   const groupLabel = `GROUP ${String(project.groupNumber).padStart(2, '0')}`
-  const thumbId = driveId(project.deckUrl)
-  const thumbUrl = thumbId ? `https://drive.google.com/thumbnail?id=${thumbId}&sz=w600` : null
+  const deckThumbId = driveId(project.deckUrl)
+  const thumbUrl = project.heroImageUrl ||
+    (deckThumbId ? `https://drive.google.com/thumbnail?id=${deckThumbId}&sz=w600` : null)
 
   return (
     <div

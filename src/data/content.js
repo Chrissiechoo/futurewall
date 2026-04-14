@@ -88,7 +88,7 @@ export default {
       "qrJourney": "See billboard → Feel recognised → Take fuel-type personality quiz → Receive personalised meal plan",
       "audience": "Millennials 30–45 experiencing low energy, overwhelmed by nutrition advice",
       "theme": "health", "themeLabel": "Health + nutrition",
-      "teamNames": "Bernice · Charis · Dion · Lakshmi · Ting En · Yee Pung", "billboardVideoUrl": "https://drive.google.com/file/d/1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl/preview", "platformUrl": "", "heroImageUrl": "",
+      "teamNames": "Bernice · Charis · Dion · Lakshmi · Ting En · Yee Pung", "billboardVideoUrl": "https://drive.google.com/file/d/1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl/preview", "platformUrl": "", "heroImageUrl": "https://drive.google.com/thumbnail?id=1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl&sz=w600",
       "deckUrl": "https://drive.google.com/file/d/14LEaGxYaZXfct3rZ99EaHoMrkBUauBvY/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1Jpes-5YMgn-NqEzIQU_vTXvOR4Ug9zqm/preview", "socialVideoUrl2": ""
     },
     {
@@ -101,7 +101,7 @@ export default {
       "qrJourney": "See athlete billboard → Feel the aspiration → Scan to Instagram Reels → See BIXEPS in action",
       "audience": "Biohackers, PMET athletes 25–45, HYROX participants",
       "theme": "health", "themeLabel": "Health + biotech",
-      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1o1yip-qphA17isn_8GRE3ifkPxpiUeG1/preview", "platformUrl": "", "heroImageUrl": "",
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1o1yip-qphA17isn_8GRE3ifkPxpiUeG1/preview", "platformUrl": "", "heroImageUrl": "https://drive.google.com/thumbnail?id=1o1yip-qphA17isn_8GRE3ifkPxpiUeG1&sz=w600",
       "deckUrl": "https://drive.google.com/file/d/1k3_TgyQecA8Lc2C2HOOlvTD_fpwB3IIq/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1U1U-ffSnxj3MIL4Tiu6o7VeCbkAxWgaF/preview", "socialVideoUrl2": ""
     },
     {
@@ -154,7 +154,7 @@ export default {
       "qrJourney": "See Tetris billboard → Recognise your skill level → Scan to LinkedIn → Take AI maturity assessment → Register for LAIS",
       "audience": "Corporate leaders, managers, founders, HR/L&D, policy professionals",
       "theme": "tech", "themeLabel": "Tech + AI leadership",
-      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1fXMWW1mbtty9IUiXYJ72PSjPoXb48yea/preview", "platformUrl": "", "heroImageUrl": "",
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1fXMWW1mbtty9IUiXYJ72PSjPoXb48yea/preview", "platformUrl": "", "heroImageUrl": "https://drive.google.com/thumbnail?id=1jciWVewnJXGngNOvYy0cIEuNxfDz3Bx-&sz=w600",
       "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
     }
   ],
