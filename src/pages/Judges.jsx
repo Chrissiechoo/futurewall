@@ -368,7 +368,7 @@ function ProjectScoreCard({ project, scores, comments, onScoreChange, onCommentC
           />
         </div>
       </div>
-        </div> {/* end expanded body */}
+        </div>
       )}
     </div>
   )
