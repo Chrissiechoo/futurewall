@@ -251,13 +251,13 @@ function ProjectModal({ project, onClose }) {
           {project.socialVideoUrl && (
             <div>
               <SectionLabel label="Social Media Adaptation" color={color} />
-              <VideoEmbed src={project.socialVideoUrl} title={`${project.campaignName} social`} portrait />
+              <VideoEmbed src={project.socialVideoUrl} title={`${project.campaignName} social`} />
             </div>
           )}
           {project.socialVideoUrl2 && (
             <div>
               <SectionLabel label="Social Media Adaptation 2" color={color} />
-              <VideoEmbed src={project.socialVideoUrl2} title={`${project.campaignName} social 2`} portrait />
+              <VideoEmbed src={project.socialVideoUrl2} title={`${project.campaignName} social 2`} />
             </div>
           )}
 
