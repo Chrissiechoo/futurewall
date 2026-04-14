@@ -50,7 +50,7 @@ export default {
       "audience": "40–55 'Sandwich Strivers' — busy adults feeling the gap between chronological and biological age",
       "theme": "health", "themeLabel": "Health + longevity",
       "teamNames": "", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "/decks/grp01-deck.pptx", "deckLabel": "Download Deck (PPTX)"
+      "deckUrl": "https://drive.google.com/file/d/1Nv7SR72dWMdYyiTAIs_JxB8Bia4vb5Qi/view", "deckLabel": "View Deck (PDF)"
     },
     {
       "id": "grp02", "groupNumber": 2, "client": "Action Buddy", "clientTheme": "AI journalling + mental wellness",
@@ -62,8 +62,8 @@ export default {
       "qrJourney": "See billboard → Check-in via QR → Take avatar quiz → Receive personalised journalling style",
       "audience": "Gen Z experiencing mental overwhelm, life transitions, or unclear thoughts",
       "theme": "wellness", "themeLabel": "Wellness + AI",
-      "teamNames": "", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "/decks/grp02-deck.pdf", "deckLabel": "View Deck (PDF)"
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1ESLVbVJ_XC30jv22geCCSKwPmnCn6IBy/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/1pEvtjRZkbotQB7xQhoasnq1xVw_WOJGp/view", "deckLabel": "View Deck (PDF)"
     },
     {
       "id": "grp03", "groupNumber": 3, "client": "Earth in Focus", "clientTheme": "Environmental film festival — Singapore",
@@ -75,8 +75,8 @@ export default {
       "qrJourney": "See wildlife on billboard → Double-take → Scan QR → Join nature reconnection journey",
       "audience": "Youths 18–30 in Singapore who feel curious about nature but unsure how to act",
       "theme": "environment", "themeLabel": "Environment + climate",
-      "teamNames": "Fatin · Piriya · Edmund · Ming Han · Jian An · Elisha", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "", "deckLabel": ""
+      "teamNames": "Fatin · Piriya · Edmund · Ming Han · Jian An · Elisha", "billboardVideoUrl": "https://drive.google.com/file/d/10Dc94IOIjCwUxyRTDPZxLAewy08dJ9o0/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/1bA4-hdrQ9vlHaotOXH_7O04BOzNDcC_A/view", "deckLabel": "View Deck (PDF)"
     },
     {
       "id": "grp04", "groupNumber": 4, "client": "Trifactor", "clientTheme": "Nutrition — functional food for busy adults",
@@ -88,8 +88,8 @@ export default {
       "qrJourney": "See billboard → Feel recognised → Take fuel-type personality quiz → Receive personalised meal plan",
       "audience": "Millennials 30–45 experiencing low energy, overwhelmed by nutrition advice",
       "theme": "health", "themeLabel": "Health + nutrition",
-      "teamNames": "Bernice · Charis · Dion · Lakshmi · Ting En · Yee Pung", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "/decks/grp04-deck.pdf", "deckLabel": "View Deck (PDF)"
+      "teamNames": "Bernice · Charis · Dion · Lakshmi · Ting En · Yee Pung", "billboardVideoUrl": "https://drive.google.com/file/d/1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/14LEaGxYaZXfct3rZ99EaHoMrkBUauBvY/view", "deckLabel": "View Deck (PDF)"
     },
     {
       "id": "grp05", "groupNumber": 5, "client": "Bixeps / QuantumTX", "clientTheme": "PEMF muscle device — athletes + biohackers",
@@ -101,8 +101,8 @@ export default {
       "qrJourney": "See athlete billboard → Feel the aspiration → Scan to Instagram Reels → See BIXEPS in action",
       "audience": "Biohackers, PMET athletes 25–45, HYROX participants",
       "theme": "health", "themeLabel": "Health + biotech",
-      "teamNames": "", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "/decks/grp05-deck.pdf", "deckLabel": "View Deck (PDF)"
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1o1yip-qphA17isn_8GRE3ifkPxpiUeG1/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/1k3_TgyQecA8Lc2C2HOOlvTD_fpwB3IIq/view", "deckLabel": "View Deck (PDF)"
     },
     {
       "id": "grp06", "groupNumber": 6, "client": "Ten Square × PlayPan", "clientTheme": "Placemaking + AI photobooth experience",
@@ -115,8 +115,8 @@ export default {
       "audience": "Tourists and locals in Singapore — designed for viral social sharing.",
       "theme": "community", "themeLabel": "Community + placemaking",
       "specialNote": "This group's campaign IS the photobooth activation running live on event night.",
-      "teamNames": "Izz · Mardhiah · Peony · Leila · Iffa · Shi Hui", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "/decks/grp06-deck.pptx", "deckLabel": "Download Deck (PPTX)"
+      "teamNames": "Izz · Mardhiah · Peony · Leila · Iffa · Shi Hui", "billboardVideoUrl": "https://drive.google.com/file/d/1VZvMflKyRYTdXFE48S1JQIHPD-2B4Rv0/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/1WfIQ04fjuj6u_1IA-2a_tE2u-p2NDLnD/view", "deckLabel": "View Deck (PPTX)"
     },
     {
       "id": "grp07", "groupNumber": 7, "client": "Bixeps / QuantumTX", "clientTheme": "PEMF muscle device — young seniors + healthspan",
@@ -128,8 +128,8 @@ export default {
       "qrJourney": "See senior living freely → Feel the aspiration → Scan to learn how → Community stories + product info",
       "audience": "Young seniors 55–65 motivated by independence and dignity; caregivers and adult children",
       "theme": "health", "themeLabel": "Health + senior care",
-      "teamNames": "", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "", "deckLabel": ""
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1T8rv_XjB8_VPPO_oCFWBYANo965BFj9b/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/1Bk78anMO8lR0_NklXFVZoVQ1-zDdwDmb/view", "deckLabel": "View Deck (PDF)"
     },
     {
       "id": "grp08", "groupNumber": 8, "client": "14 Days — Dementia SG", "clientTheme": "Dementia awareness — Gen Z + intergenerational",
@@ -141,8 +141,8 @@ export default {
       "qrJourney": "See glitch billboard → Unsettled → Scan QR → Watch TikTok micro-drama → Learn early signs → Take memory quiz",
       "audience": "Gen Z + caregivers and family members.",
       "theme": "society", "themeLabel": "Society + dementia",
-      "teamNames": "Celeste · Chloe · Ella · Jie Yun · Ryan · Shaun", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "/decks/grp08-deck.pdf", "deckLabel": "View Deck (PDF)"
+      "teamNames": "Celeste · Chloe · Ella · Jie Yun · Ryan · Shaun", "billboardVideoUrl": "https://drive.google.com/file/d/17aKhclxbaGNJOMdoRWwpZFsAeRxNBVZG/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/1jPhbo6Wh5Le8mJYyNmKxgt2EwNbpjdDq/view", "deckLabel": "View Deck (PDF)"
     },
     {
       "id": "grp09", "groupNumber": 9, "client": "LAIS / Centre for AI Leadership (C4AIL)", "clientTheme": "AI leadership maturity + summit registration",
@@ -154,8 +154,8 @@ export default {
       "qrJourney": "See Tetris billboard → Recognise your skill level → Scan to LinkedIn → Take AI maturity assessment → Register for LAIS",
       "audience": "Corporate leaders, managers, founders, HR/L&D, policy professionals",
       "theme": "tech", "themeLabel": "Tech + AI leadership",
-      "teamNames": "", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "/decks/grp09-deck.pdf", "deckLabel": "View Deck (PDF)"
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1fXMWW1mbtty9IUiXYJ72PSjPoXb48yea/preview", "platformUrl": "", "heroImageUrl": "",
+      "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)"
     }
   ],
   "partners": {
