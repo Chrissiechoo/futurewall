@@ -50,7 +50,7 @@ export default {
       "audience": "40–55 'Sandwich Strivers' — busy adults feeling the gap between chronological and biological age",
       "theme": "health", "themeLabel": "Health + longevity",
       "teamNames": "", "billboardVideoUrl": "", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1Nv7SR72dWMdYyiTAIs_JxB8Bia4vb5Qi/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/1Nv7SR72dWMdYyiTAIs_JxB8Bia4vb5Qi/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
     },
     {
       "id": "grp02", "groupNumber": 2, "client": "Action Buddy", "clientTheme": "AI journalling + mental wellness",
@@ -63,7 +63,7 @@ export default {
       "audience": "Gen Z experiencing mental overwhelm, life transitions, or unclear thoughts",
       "theme": "wellness", "themeLabel": "Wellness + AI",
       "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1ESLVbVJ_XC30jv22geCCSKwPmnCn6IBy/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1pEvtjRZkbotQB7xQhoasnq1xVw_WOJGp/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/1pEvtjRZkbotQB7xQhoasnq1xVw_WOJGp/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/15-Q_lu95m2657gM4Nh-fHabefjGDfHXl/preview", "socialVideoUrl2": ""
     },
     {
       "id": "grp03", "groupNumber": 3, "client": "Earth in Focus", "clientTheme": "Environmental film festival — Singapore",
@@ -76,7 +76,7 @@ export default {
       "audience": "Youths 18–30 in Singapore who feel curious about nature but unsure how to act",
       "theme": "environment", "themeLabel": "Environment + climate",
       "teamNames": "Fatin · Piriya · Edmund · Ming Han · Jian An · Elisha", "billboardVideoUrl": "https://drive.google.com/file/d/10Dc94IOIjCwUxyRTDPZxLAewy08dJ9o0/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1bA4-hdrQ9vlHaotOXH_7O04BOzNDcC_A/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/1bA4-hdrQ9vlHaotOXH_7O04BOzNDcC_A/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1dkWVgrqQgxv7RxqRoiYhsiAC-feqwK8t/preview", "socialVideoUrl2": "https://drive.google.com/file/d/1aW2KdTm2kAkJcHF96qu3EkPiJMqet9hG/preview"
     },
     {
       "id": "grp04", "groupNumber": 4, "client": "Trifactor", "clientTheme": "Nutrition — functional food for busy adults",
@@ -89,7 +89,7 @@ export default {
       "audience": "Millennials 30–45 experiencing low energy, overwhelmed by nutrition advice",
       "theme": "health", "themeLabel": "Health + nutrition",
       "teamNames": "Bernice · Charis · Dion · Lakshmi · Ting En · Yee Pung", "billboardVideoUrl": "https://drive.google.com/file/d/1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/14LEaGxYaZXfct3rZ99EaHoMrkBUauBvY/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/14LEaGxYaZXfct3rZ99EaHoMrkBUauBvY/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1Jpes-5YMgn-NqEzIQU_vTXvOR4Ug9zqm/preview", "socialVideoUrl2": ""
     },
     {
       "id": "grp05", "groupNumber": 5, "client": "Bixeps / QuantumTX", "clientTheme": "PEMF muscle device — athletes + biohackers",
@@ -102,7 +102,7 @@ export default {
       "audience": "Biohackers, PMET athletes 25–45, HYROX participants",
       "theme": "health", "themeLabel": "Health + biotech",
       "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1o1yip-qphA17isn_8GRE3ifkPxpiUeG1/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1k3_TgyQecA8Lc2C2HOOlvTD_fpwB3IIq/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/1k3_TgyQecA8Lc2C2HOOlvTD_fpwB3IIq/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1U1U-ffSnxj3MIL4Tiu6o7VeCbkAxWgaF/preview", "socialVideoUrl2": ""
     },
     {
       "id": "grp06", "groupNumber": 6, "client": "Ten Square × PlayPan", "clientTheme": "Placemaking + AI photobooth experience",
@@ -116,7 +116,7 @@ export default {
       "theme": "community", "themeLabel": "Community + placemaking",
       "specialNote": "This group's campaign IS the photobooth activation running live on event night.",
       "teamNames": "Izz · Mardhiah · Peony · Leila · Iffa · Shi Hui", "billboardVideoUrl": "https://drive.google.com/file/d/1VZvMflKyRYTdXFE48S1JQIHPD-2B4Rv0/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1WfIQ04fjuj6u_1IA-2a_tE2u-p2NDLnD/view", "deckLabel": "View Deck (PPTX)"
+      "deckUrl": "https://drive.google.com/file/d/1WfIQ04fjuj6u_1IA-2a_tE2u-p2NDLnD/view", "deckLabel": "View Deck (PPTX)", "socialVideoUrl": "https://drive.google.com/file/d/1EUBPAAw-9g9UOsuJtl4JqH2O0I4boWD3/preview", "socialVideoUrl2": ""
     },
     {
       "id": "grp07", "groupNumber": 7, "client": "Bixeps / QuantumTX", "clientTheme": "PEMF muscle device — young seniors + healthspan",
@@ -129,7 +129,7 @@ export default {
       "audience": "Young seniors 55–65 motivated by independence and dignity; caregivers and adult children",
       "theme": "health", "themeLabel": "Health + senior care",
       "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1T8rv_XjB8_VPPO_oCFWBYANo965BFj9b/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1Bk78anMO8lR0_NklXFVZoVQ1-zDdwDmb/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/1Bk78anMO8lR0_NklXFVZoVQ1-zDdwDmb/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/16UuEaa10ongkM4kC0_52IhHxy5jM3BNd/preview", "socialVideoUrl2": ""
     },
     {
       "id": "grp08", "groupNumber": 8, "client": "14 Days — Dementia SG", "clientTheme": "Dementia awareness — Gen Z + intergenerational",
@@ -142,7 +142,7 @@ export default {
       "audience": "Gen Z + caregivers and family members.",
       "theme": "society", "themeLabel": "Society + dementia",
       "teamNames": "Celeste · Chloe · Ella · Jie Yun · Ryan · Shaun", "billboardVideoUrl": "https://drive.google.com/file/d/17aKhclxbaGNJOMdoRWwpZFsAeRxNBVZG/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1jPhbo6Wh5Le8mJYyNmKxgt2EwNbpjdDq/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/1jPhbo6Wh5Le8mJYyNmKxgt2EwNbpjdDq/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1eo-wdYCh283wRCRBai9ygzYfVgkjl1Gx/preview", "socialVideoUrl2": "https://drive.google.com/file/d/13EkTXtDKjOBfw7t2DEW-5i0SwgqLql3Q/preview"
     },
     {
       "id": "grp09", "groupNumber": 9, "client": "LAIS / Centre for AI Leadership (C4AIL)", "clientTheme": "AI leadership maturity + summit registration",
@@ -155,7 +155,7 @@ export default {
       "audience": "Corporate leaders, managers, founders, HR/L&D, policy professionals",
       "theme": "tech", "themeLabel": "Tech + AI leadership",
       "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1fXMWW1mbtty9IUiXYJ72PSjPoXb48yea/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)"
+      "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
     }
   ],
   "partners": {
