@@ -154,7 +154,7 @@ export default {
       "qrJourney": "See Tetris billboard → Recognise your skill level → Scan to LinkedIn → Take AI maturity assessment → Register for LAIS",
       "audience": "Corporate leaders, managers, founders, HR/L&D, policy professionals",
       "theme": "tech", "themeLabel": "Tech + AI leadership",
-      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/XJbXxgV0wsg", "billboardPortrait": true, "platformUrl": "", "heroImageUrl": "https://img.youtube.com/vi/XJbXxgV0wsg/hqdefault.jpg",
+      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/3yoPiJlerNU", "billboardPortrait": true, "platformUrl": "", "heroImageUrl": "https://img.youtube.com/vi/3yoPiJlerNU/hqdefault.jpg",
       "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
     }
   ],
