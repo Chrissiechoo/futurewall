@@ -26,9 +26,13 @@ function driveId(url) {
   return m ? m[1] : null
 }
 
-// Convert /view URL to /preview URL for embedding
+// Convert /view URL to /preview URL for Drive embeds;
+// wrap non-Drive PDFs in Google Docs Viewer for reliable iframe rendering
 function toPreview(url) {
-  return url?.replace('/view', '/preview') || null
+  if (!url) return null
+  if (url.includes('drive.google.com')) return url.replace('/view', '/preview')
+  if (url.endsWith('.pdf')) return `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`
+  return url
 }
 
 // Responsive embed wrapper — maintains aspect ratio without stretching
@@ -225,7 +229,7 @@ function ProjectModal({ project, onClose }) {
                   padding: '8px 16px', borderRadius: '6px', textDecoration: 'none',
                 }}
               >
-                ↗ Open in Google Drive
+                ↗ Open Full Deck
               </a>
             </div>
           )}

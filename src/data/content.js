@@ -128,7 +128,7 @@ export default {
       "qrJourney": "See senior on billboard → Relate to the struggle → Scan QR → Take Muscle Age Quiz on website → Download BIXEPS app → Book a free trial session",
       "audience": "Young seniors 55–65 motivated by independence, dignity, and consistent wellness routines; adult children seeking solutions for ageing parents",
       "theme": "health", "themeLabel": "Health + senior care",
-      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1T8rv_XjB8_VPPO_oCFWBYANo965BFj9b/preview", "platformUrl": "", "heroImageUrl": "",
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1T8rv_XjB8_VPPO_oCFWBYANo965BFj9b/preview", "platformUrl": "", "heroImageUrl": "https://drive.google.com/thumbnail?id=1T8rv_XjB8_VPPO_oCFWBYANo965BFj9b&sz=w600",
       "deckUrl": "https://futurewall.vercel.app/decks/grp07-deck.pdf", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/16UuEaa10ongkM4kC0_52IhHxy5jM3BNd/preview", "socialVideoUrl2": ""
     },
     {
