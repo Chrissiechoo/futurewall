@@ -129,7 +129,7 @@ export default {
       "audience": "Young seniors 55–65 motivated by independence, dignity, and consistent wellness routines; adult children seeking solutions for ageing parents",
       "theme": "health", "themeLabel": "Health + senior care",
       "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1T8rv_XjB8_VPPO_oCFWBYANo965BFj9b/preview", "platformUrl": "", "heroImageUrl": "",
-      "deckUrl": "https://drive.google.com/file/d/1Bk78anMO8lR0_NklXFVZoVQ1-zDdwDmb/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/16UuEaa10ongkM4kC0_52IhHxy5jM3BNd/preview", "socialVideoUrl2": ""
+      "deckUrl": "https://futurewall.vercel.app/decks/grp07-deck.pdf", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/16UuEaa10ongkM4kC0_52IhHxy5jM3BNd/preview", "socialVideoUrl2": ""
     },
     {
       "id": "grp08", "groupNumber": 8, "client": "14 Days — Dementia SG", "clientTheme": "Dementia awareness — Gen Z + intergenerational",
