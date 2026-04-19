@@ -49,7 +49,7 @@ export default {
       "qrJourney": "See billboard → Scan QR → Take Fitness Pledge → Complete $40 Self-Starter Challenge → Receive personalised fitness roadmap for travel",
       "audience": "The Sandwich Striver (40–55) — desk-bound adults who want to stay physically capable for family travel and experiences",
       "theme": "health", "themeLabel": "Health + longevity",
-      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/7VP19miQR6k", "platformUrl": "", "heroImageUrl": "https://img.youtube.com/vi/7VP19miQR6k/hqdefault.jpg",
+      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/7VP19miQR6k", "platformUrl": "", "heroImageUrl": "https://futurewall.vercel.app/images/grp01-thumb.jpg",
       "deckUrl": "https://drive.google.com/file/d/1Nv7SR72dWMdYyiTAIs_JxB8Bia4vb5Qi/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://www.youtube.com/embed/WAjFZzU0xF8", "socialVideoUrl2": ""
     },
     {
@@ -88,7 +88,7 @@ export default {
       "qrJourney": "See billboard or Instagram video → Scan QR → Land on 'This Used To Be Easy' website → Take personality quiz → Receive personalised nutrition insights → Join 10-Day AWE Meal Challenge",
       "audience": "Non-active working millennials 30–45 in a preventive health phase — experiencing longer recovery times, afternoon energy crashes, and nutrition information overload",
       "theme": "health", "themeLabel": "Health + nutrition",
-      "teamNames": "Bernice · Charis · Dion · Lakshmi · Ting En · Yee Pung", "billboardVideoUrl": "https://drive.google.com/file/d/1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl/preview", "platformUrl": "", "heroImageUrl": "https://drive.google.com/thumbnail?id=1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl&sz=w600",
+      "teamNames": "Bernice · Charis · Dion · Lakshmi · Ting En · Yee Pung", "billboardVideoUrl": "https://drive.google.com/file/d/1pws769ibJzsnYLjyA1aUSoliJ3dlWUFl/preview", "platformUrl": "", "heroImageUrl": "",
       "deckUrl": "https://drive.google.com/file/d/14LEaGxYaZXfct3rZ99EaHoMrkBUauBvY/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1Jpes-5YMgn-NqEzIQU_vTXvOR4Ug9zqm/preview", "socialVideoUrl2": ""
     },
     {
@@ -101,7 +101,7 @@ export default {
       "qrJourney": "See billboard → Scan QR → Land on @quantumtx Instagram → See social proof, results, and expert endorsements → Visit quantumtx.com via link in bio",
       "audience": "Active Achievers — data-driven PMET professionals late 20s to mid-40s, upper-middle to high income. Two segments: Athletes/Fitspo (mature markets) and Biohackers (new markets) seeking efficiency, measurable results, and personal agency",
       "theme": "health", "themeLabel": "Health + biotech",
-      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1o1yip-qphA17isn_8GRE3ifkPxpiUeG1/preview", "platformUrl": "", "heroImageUrl": "https://drive.google.com/thumbnail?id=1o1yip-qphA17isn_8GRE3ifkPxpiUeG1&sz=w600",
+      "teamNames": "", "billboardVideoUrl": "https://drive.google.com/file/d/1o1yip-qphA17isn_8GRE3ifkPxpiUeG1/preview", "platformUrl": "", "heroImageUrl": "",
       "deckUrl": "https://drive.google.com/file/d/1k3_TgyQecA8Lc2C2HOOlvTD_fpwB3IIq/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "https://drive.google.com/file/d/1U1U-ffSnxj3MIL4Tiu6o7VeCbkAxWgaF/preview", "socialVideoUrl2": ""
     },
     {
@@ -154,7 +154,7 @@ export default {
       "qrJourney": "Glance at billboard → Hook lands → Scan QR → Share with network → Join community → Learn → Take AI Maturity Assessment at c4ail-aimaturityquiz.vercel.app",
       "audience": "Company leaders confident in AI adoption but unclear on actual accountability and maturity levels — managers, founders, HR/L&D, and policy professionals",
       "theme": "tech", "themeLabel": "Tech + AI leadership",
-      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/3yoPiJlerNU", "billboardPortrait": true, "platformUrl": "", "heroImageUrl": "https://img.youtube.com/vi/3yoPiJlerNU/hqdefault.jpg",
+      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/3yoPiJlerNU", "billboardPortrait": true, "platformUrl": "", "heroImageUrl": "",
       "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
     }
   ],
