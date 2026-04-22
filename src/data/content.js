@@ -154,7 +154,7 @@ export default {
       "qrJourney": "Glance at billboard → Hook lands → Scan QR → Share with network → Join community → Learn → Take AI Maturity Assessment at c4ail-aimaturityquiz.vercel.app",
       "audience": "Company leaders confident in AI adoption but unclear on actual accountability and maturity levels — managers, founders, HR/L&D, and policy professionals",
       "theme": "tech", "themeLabel": "Tech + AI leadership",
-      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/3yoPiJlerNU", "billboardPortrait": true, "platformUrl": "", "heroImageUrl": "",
+      "teamNames": "", "billboardVideoUrl": "https://www.youtube.com/embed/FhHJ46tooPs", "platformUrl": "", "heroImageUrl": "",
       "deckUrl": "https://drive.google.com/file/d/1paQue8l84EMw7fXBFLe-kbdZTFZoZc5T/view", "deckLabel": "View Deck (PDF)", "socialVideoUrl": "", "socialVideoUrl2": ""
     }
   ],
