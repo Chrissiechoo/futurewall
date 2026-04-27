@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const EVENT_TIME = new Date('2026-04-30T17:00:00+08:00').getTime()
+const EVENT_TIME = new Date('2026-04-30T18:00:00+08:00').getTime()
 
 function getTimeLeft() {
   const now = Date.now()

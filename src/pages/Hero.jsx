@@ -125,7 +125,7 @@ export default function Hero() {
             {[
               { label: '30 April 2026', color: '#F0F0EE' },
               { label: 'Ten Square, Singapore', color: '#F0F0EE' },
-              { label: '5–9 PM SGT', color: '#F0F0EE' },
+              { label: '6–9 PM SGT', color: '#F0F0EE' },
               { label: '#FutureIsOnTheWall', color: '#FFB020' },
             ].map(({ label, color }) => (
               <span
