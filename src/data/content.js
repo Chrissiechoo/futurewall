@@ -185,6 +185,10 @@ export default {
       { "item": "Clear umbrellas (30–50 units)", "status": "seeking" }
     ]
   },
+  "photoWall": {
+    "instagramPrompt": "Tag your photo with #FutureIsOnTheWall on Instagram too — let the wall spill onto the feed.",
+    "overlayText": "#FutureIsOnTheWall"
+  },
   "history": [
     { "year": "2017", "event": "GSA Silver Cloud WIP Showcase", "note": "First SIT creative community event at Ten Square" },
     { "year": "2023", "event": "The Great Giggles", "note": "UN Creativity Day celebration. Guest of Honour: Mayor Denise Phua" },
