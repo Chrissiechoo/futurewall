@@ -165,6 +165,32 @@ export default function PhotoWall() {
               Upload to the Future Wall
             </h2>
 
+            {/* Instructions */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+              marginBottom: '28px',
+            }}>
+              {[
+                { step: '①', text: 'Take a photo on the night — or pick one from your camera roll' },
+                { step: '②', text: 'Type your name below (optional)' },
+                { step: '③', text: 'Drop your photo in the box or tap to upload' },
+                { step: '④', text: 'It appears on the live wall instantly!' },
+              ].map(({ step, text }) => (
+                <div key={step} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                  <span style={{
+                    color: '#FF4422',
+                    fontWeight: 900,
+                    fontSize: '1rem',
+                    flexShrink: 0,
+                    lineHeight: 1.5,
+                  }}>{step}</span>
+                  <span style={{ color: '#888', fontSize: '0.9rem', lineHeight: 1.6 }}>{text}</span>
+                </div>
+              ))}
+            </div>
+
             {/* Optional name */}
             <div style={{ marginBottom: '20px' }}>
               <label style={{
