@@ -10,7 +10,8 @@ import { db } from '../firebase'
 import content from '../data/content'
 
 const SESSION_ID = Math.random().toString(36).slice(2)
-const VOTED_KEY = 'futurewall_voted'
+const VOTES_KEY = 'futurewall_vote_count'
+const MAX_VOTES = 3
 
 export default function Vote() {
   const { projects } = content
@@ -25,8 +26,8 @@ export default function Vote() {
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
-  const [alreadyVoted, setAlreadyVoted] = useState(false)
-  const [alreadyVotedFor, setAlreadyVotedFor] = useState('')
+  const [voteCount, setVoteCount] = useState(0)
+  const [lastVotedFor, setLastVotedFor] = useState('')
 
   // Leaderboard state — always visible
   const [votes, setVotes] = useState([])
@@ -43,13 +44,9 @@ export default function Vote() {
   }, [searchParams, location.state])
 
   useEffect(() => {
-    const voted = localStorage.getItem(VOTED_KEY)
-    if (voted) {
-      setAlreadyVoted(true)
-      const p = projects.find(p => p.id === voted)
-      setAlreadyVotedFor(p ? p.campaignName : voted)
-    }
-  }, [projects])
+    const count = parseInt(localStorage.getItem(VOTES_KEY) || '0', 10)
+    setVoteCount(count)
+  }, [])
 
   // Listen to votes — always visible
   useEffect(() => {
@@ -72,7 +69,7 @@ export default function Vote() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!selectedGroup) return
-    if (alreadyVoted) return
+    if (voteCount >= MAX_VOTES) return
 
     setSubmitting(true)
     setError('')
@@ -88,10 +85,14 @@ export default function Vote() {
         sessionId: SESSION_ID,
       })
 
-      localStorage.setItem(VOTED_KEY, selectedGroup)
-      setAlreadyVoted(true)
-      setAlreadyVotedFor(project ? project.campaignName : selectedGroup)
+      const newCount = voteCount + 1
+      localStorage.setItem(VOTES_KEY, String(newCount))
+      setVoteCount(newCount)
+      setLastVotedFor(project ? project.campaignName : selectedGroup)
       setSubmitted(true)
+      // Reset form for next vote
+      setSelectedGroup('')
+      setReason('')
     } catch (err) {
       console.error('Vote submit error:', err)
       setError('Something went wrong. Please try again.')
@@ -167,8 +168,8 @@ export default function Vote() {
           {/* ---- VOTE TAB ---- */}
           {activeTab === 'vote' && (
             <div style={{ maxWidth: '640px' }}>
-              {alreadyVoted && !submitted ? (
-                /* Already voted message */
+              {voteCount >= MAX_VOTES ? (
+                /* Used all 3 votes */
                 <div style={{
                   background: 'rgba(0,212,232,0.08)',
                   border: '1px solid rgba(0,212,232,0.25)',
@@ -176,7 +177,7 @@ export default function Vote() {
                   padding: '40px',
                   textAlign: 'center',
                 }}>
-                  <div style={{ fontSize: '3rem', marginBottom: '16px' }}>✓</div>
+                  <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🗳️</div>
                   <h2 style={{
                     fontWeight: 900,
                     fontSize: '1.5rem',
@@ -184,13 +185,10 @@ export default function Vote() {
                     color: '#00D4E8',
                     marginBottom: '12px',
                   }}>
-                    You've Already Voted
+                    You've used all 3 votes!
                   </h2>
-                  <p style={{ color: '#888', lineHeight: 1.7, marginBottom: '8px' }}>
-                    You voted for: <strong style={{ color: '#F0F0EE' }}>{alreadyVotedFor}</strong>
-                  </p>
                   <p style={{ color: '#888', lineHeight: 1.7, marginBottom: '28px' }}>
-                    Thank you for your vote. Check the leaderboard to see how it's going on event night.
+                    Thank you for voting. The Audience Choice winner will be announced on event night, 30 April 2026.
                   </p>
                   <button
                     onClick={() => setActiveTab('leaderboard')}
@@ -199,48 +197,53 @@ export default function Vote() {
                     See Leaderboard
                   </button>
                 </div>
-              ) : submitted ? (
-                /* Success state */
-                <div style={{
-                  background: 'rgba(255,68,34,0.08)',
-                  border: '1px solid rgba(255,68,34,0.25)',
-                  borderRadius: '12px',
-                  padding: '40px',
-                  textAlign: 'center',
-                }}>
-                  <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🎉</div>
-                  <h2 style={{
-                    fontWeight: 900,
-                    fontSize: '1.5rem',
-                    textTransform: 'uppercase',
-                    color: '#FF4422',
-                    marginBottom: '12px',
-                  }}>
-                    Vote Submitted!
-                  </h2>
-                  <p style={{ color: '#888', lineHeight: 1.7, marginBottom: '8px' }}>
-                    You voted for: <strong style={{ color: '#F0F0EE' }}>{alreadyVotedFor}</strong>
-                  </p>
-                  <p style={{ color: '#888', lineHeight: 1.7, marginBottom: '28px' }}>
-                    The Audience Choice winner will be announced on event night, 30 April 2026.
-                  </p>
-                  <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                    <button
-                      onClick={() => setActiveTab('leaderboard')}
-                      className="btn-cyan"
-                    >
-                      See Leaderboard
-                    </button>
-                    <Link to="/projects" className="btn-outline">
-                      Browse Projects
-                    </Link>
-                  </div>
-                </div>
               ) : (
                 /* Vote form */
                 <form onSubmit={handleSubmit}>
+                  {/* Votes remaining indicator */}
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '24px',
+                  }}>
+                    <span style={{ color: '#888', fontSize: '0.85rem' }}>Votes remaining:</span>
+                    {[...Array(MAX_VOTES)].map((_, i) => (
+                      <span key={i} style={{
+                        width: '12px',
+                        height: '12px',
+                        borderRadius: '50%',
+                        background: i < (MAX_VOTES - voteCount) ? '#FF4422' : '#2A2A2E',
+                        border: '1px solid #444',
+                        display: 'inline-block',
+                      }} />
+                    ))}
+                    <span style={{ color: '#FF4422', fontWeight: 700, fontSize: '0.85rem' }}>
+                      {MAX_VOTES - voteCount} of {MAX_VOTES}
+                    </span>
+                  </div>
+
+                  {submitted && (
+                    <div style={{
+                      background: 'rgba(255,68,34,0.08)',
+                      border: '1px solid rgba(255,68,34,0.25)',
+                      borderRadius: '8px',
+                      padding: '16px 20px',
+                      marginBottom: '24px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                    }}>
+                      <span style={{ fontSize: '1.4rem' }}>✓</span>
+                      <div>
+                        <div style={{ fontWeight: 700, color: '#FF4422', fontSize: '0.85rem' }}>Vote submitted!</div>
+                        <div style={{ color: '#888', fontSize: '0.85rem' }}>You voted for: <strong style={{ color: '#F0F0EE' }}>{lastVotedFor}</strong>{voteCount < MAX_VOTES ? ' — cast another?' : ''}</div>
+                      </div>
+                    </div>
+                  )}
+
                   <p style={{ color: '#888', lineHeight: 1.7, marginBottom: '32px' }}>
-                    One vote per guest. Choose the campaign that impressed you most — or use this to support a team before you arrive on the night.
+                    You have <strong style={{ color: '#F0F0EE' }}>3 votes</strong> — spread them across different campaigns or back the same one. Choose what impressed you most.
                   </p>
 
                   {/* Project selector */}
@@ -331,6 +334,7 @@ export default function Vote() {
               )}
             </div>
           )}
+
 
           {/* ---- LEADERBOARD TAB ---- */}
           {activeTab === 'leaderboard' && (
