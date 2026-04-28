@@ -249,8 +249,11 @@ export default function RSVP() {
                 }}>
                   <strong>{formData.name}</strong>, your registration has been received.
                 </p>
-                <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '24px' }}>
+                <p style={{ color: '#555', lineHeight: 1.8, marginBottom: '8px' }}>
                   See you on <strong>30 April 2026, {event.displayTime}</strong> at <strong>Ten Square</strong>!
+                </p>
+                <p style={{ color: '#888', lineHeight: 1.8, marginBottom: '24px', fontSize: '0.95rem' }}>
+                  Free and easy — come as you are, come as you please. Just come and celebrate with us. 🎉
                 </p>
                 <div style={{
                   background: '#F5F5F0',

@@ -21,7 +21,9 @@ export default function PhotoWall() {
   const [uploaderName, setUploaderName] = useState('')
   const [dragOver, setDragOver] = useState(false)
   const [uploadState, setUploadState] = useState(null) // null | 'uploading' | 'success' | 'error'
-  const [uploadProgress, setUploadProgress] = useState(0)
+  const [uploadProgress, setUploadProgress] = useState(0) // 0–100 overall
+  const [uploadTotal, setUploadTotal] = useState(0)
+  const [uploadDone, setUploadDone] = useState(0)
   const [uploadError, setUploadError] = useState('')
   const fileInputRef = useRef(null)
 
@@ -44,75 +46,95 @@ export default function PhotoWall() {
     return () => unsub()
   }, [])
 
-  const handleFile = (file) => {
-    if (!file) return
+  const uploadSingleFile = (file, progressCallback) => {
+    return new Promise((resolve, reject) => {
+      const timestamp = Date.now() + Math.random()
+      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
+      const storagePath = `photos/${timestamp}_${safeName}`
+      const storageRef = ref(storage, storagePath)
+      const uploadTask = uploadBytesResumable(storageRef, file)
 
-    if (!ACCEPTED_TYPES.includes(file.type)) {
-      setUploadError('Please upload a JPG, PNG, or WebP file.')
+      uploadTask.on(
+        'state_changed',
+        snapshot => {
+          const pct = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          progressCallback(Math.round(pct))
+        },
+        err => reject(err),
+        async () => {
+          try {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+            await addDoc(collection(db, 'photos'), {
+              storageUrl: downloadURL,
+              uploaderName: uploaderName.trim(),
+              fileName: file.name,
+              timestamp: serverTimestamp(),
+            })
+            resolve()
+          } catch (err) {
+            reject(err)
+          }
+        }
+      )
+    })
+  }
+
+  const handleFiles = async (files) => {
+    const valid = Array.from(files).filter(file => {
+      if (!ACCEPTED_TYPES.includes(file.type)) return false
+      if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) return false
+      return true
+    })
+
+    if (valid.length === 0) {
+      setUploadError('Please upload JPG, PNG, or WebP files under 10MB each.')
       return
     }
-    if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-      setUploadError(`File is too large. Maximum size is ${MAX_FILE_SIZE_MB}MB.`)
-      return
-    }
 
-    setUploadError('')
+    const invalid = files.length - valid.length
+    setUploadError(invalid > 0 ? `${invalid} file(s) skipped — wrong type or too large.` : '')
     setUploadState('uploading')
+    setUploadTotal(valid.length)
+    setUploadDone(0)
     setUploadProgress(0)
 
-    const timestamp = Date.now()
-    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_')
-    const storagePath = `photos/${timestamp}_${safeName}`
-    const storageRef = ref(storage, storagePath)
-    const uploadTask = uploadBytesResumable(storageRef, file)
+    // Track per-file progress
+    const progresses = new Array(valid.length).fill(0)
 
-    uploadTask.on(
-      'state_changed',
-      snapshot => {
-        const pct = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        setUploadProgress(Math.round(pct))
-      },
-      err => {
-        console.error('Upload error:', err)
-        setUploadError('Upload failed. Please try again.')
-        setUploadState('error')
-      },
-      async () => {
-        try {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
-          await addDoc(collection(db, 'photos'), {
-            storageUrl: downloadURL,
-            uploaderName: uploaderName.trim(),
-            fileName: file.name,
-            timestamp: serverTimestamp(),
-          })
-          setUploadState('success')
-          setUploadProgress(100)
-          // Reset form after brief pause
-          setTimeout(() => {
-            setUploadState(null)
-            setUploaderName('')
-            setUploadProgress(0)
-          }, 3000)
-        } catch (err) {
-          console.error('Firestore write error:', err)
-          setUploadError('Photo uploaded but record failed. Please try again.')
-          setUploadState('error')
-        }
-      }
+    const uploads = valid.map((file, i) =>
+      uploadSingleFile(file, (pct) => {
+        progresses[i] = pct
+        const overall = Math.round(progresses.reduce((a, b) => a + b, 0) / valid.length)
+        setUploadProgress(overall)
+      }).then(() => {
+        setUploadDone(prev => prev + 1)
+      })
     )
+
+    try {
+      await Promise.all(uploads)
+      setUploadState('success')
+      setTimeout(() => {
+        setUploadState(null)
+        setUploadProgress(0)
+        setUploadTotal(0)
+        setUploadDone(0)
+      }, 3000)
+    } catch (err) {
+      console.error('Upload error:', err)
+      setUploadError('One or more uploads failed. Please try again.')
+      setUploadState('error')
+    }
   }
 
   const handleDrop = (e) => {
     e.preventDefault()
     setDragOver(false)
-    const file = e.dataTransfer.files[0]
-    if (file) handleFile(file)
+    if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files)
   }
 
   const handleFileInput = (e) => {
-    const file = e.target.files[0]
-    if (file) handleFile(file)
+    if (e.target.files.length) handleFiles(e.target.files)
     e.target.value = ''
   }
 
@@ -165,6 +187,32 @@ export default function PhotoWall() {
               Upload to the Future Wall
             </h2>
 
+            {/* Instructions */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+              marginBottom: '28px',
+            }}>
+              {[
+                { step: '①', text: 'Take a photo on the night — or pick one from your camera roll' },
+                { step: '②', text: 'Type your name below (optional)' },
+                { step: '③', text: 'Drop your photo in the box or tap to upload' },
+                { step: '④', text: 'It appears on the live wall instantly!' },
+              ].map(({ step, text }) => (
+                <div key={step} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                  <span style={{
+                    color: '#FF4422',
+                    fontWeight: 900,
+                    fontSize: '1rem',
+                    flexShrink: 0,
+                    lineHeight: 1.5,
+                  }}>{step}</span>
+                  <span style={{ color: '#888', fontSize: '0.9rem', lineHeight: 1.6 }}>{text}</span>
+                </div>
+              ))}
+            </div>
+
             {/* Optional name */}
             <div style={{ marginBottom: '20px' }}>
               <label style={{
@@ -208,10 +256,12 @@ export default function PhotoWall() {
               {uploadState === 'uploading' ? (
                 <div>
                   <div style={{ fontSize: '2rem', marginBottom: '12px' }}>⬆️</div>
-                  <div style={{ fontWeight: 700, color: '#F0F0EE', marginBottom: '16px' }}>
-                    Uploading... {uploadProgress}%
+                  <div style={{ fontWeight: 700, color: '#F0F0EE', marginBottom: '4px' }}>
+                    Uploading {uploadDone} of {uploadTotal} photo{uploadTotal !== 1 ? 's' : ''}...
                   </div>
-                  {/* Progress bar */}
+                  <div style={{ color: '#888', fontSize: '0.85rem', marginBottom: '16px' }}>
+                    {uploadProgress}% complete
+                  </div>
                   <div style={{
                     height: '6px',
                     background: '#2A2A2E',
@@ -233,7 +283,7 @@ export default function PhotoWall() {
                 <div>
                   <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>✓</div>
                   <div style={{ fontWeight: 700, color: '#4CAF50', fontSize: '1rem' }}>
-                    Photo added to the Future Wall!
+                    {uploadTotal} photo{uploadTotal !== 1 ? 's' : ''} added to the Future Wall!
                   </div>
                 </div>
               ) : (
@@ -245,10 +295,10 @@ export default function PhotoWall() {
                     fontSize: '1rem',
                     marginBottom: '8px',
                   }}>
-                    Drop your photo here or click to upload
+                    Drop photos here or tap to upload
                   </div>
                   <div style={{ color: '#888', fontSize: '0.85rem' }}>
-                    JPG, PNG, WebP — up to {MAX_FILE_SIZE_MB}MB
+                    Select multiple · JPG, PNG, WebP · up to {MAX_FILE_SIZE_MB}MB each
                   </div>
                 </div>
               )}
@@ -259,6 +309,7 @@ export default function PhotoWall() {
               type="file"
               accept="image/jpeg,image/jpg,image/png,image/webp"
               onChange={handleFileInput}
+              multiple
               style={{ display: 'none' }}
             />
 
