@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { collection, addDoc, serverTimestamp, onSnapshot } from 'firebase/firestore'
+import { collection, addDoc, doc, setDoc, increment, serverTimestamp, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 import content from '../data/content'
 
@@ -84,6 +84,8 @@ export default function RSVP() {
         ...formData,
         timestamp: serverTimestamp(),
       })
+      // Update public counter (readable without auth)
+      await setDoc(doc(db, 'stats', 'rsvp'), { count: increment(1) }, { merge: true })
       setSubmitted(true)
     } catch (err) {
       console.error('RSVP submit error:', err)

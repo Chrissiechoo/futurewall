@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { collection, onSnapshot } from 'firebase/firestore'
+import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '../firebase'
 import Countdown from '../components/Countdown'
 import content from '../data/content'
@@ -11,8 +11,8 @@ export default function Hero() {
 
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, 'rsvp'),
-      snapshot => setRsvpCount(snapshot.size),
+      doc(db, 'stats', 'rsvp'),
+      snapshot => setRsvpCount(snapshot.exists() ? (snapshot.data().count ?? 0) : 0),
       err => console.error('RSVP count error:', err)
     )
     return () => unsub()
